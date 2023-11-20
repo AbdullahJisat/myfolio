@@ -15,20 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ResumeController@index');
 Route::post('message', function (\Illuminate\Http\Request $request) {
-    $attemptToWriteObject = [
-        "hirename" => $request->hirename,
-        "hirephone" => $request->hirephone,
-        "hireemail" => $request->hireemail,
-        "hiremessage" => $request->hiremessage,
-        "hiremessage" => $request->hiremessage,
-        "hiremessage" => $request->hiremessage,
-        "deleted" => 0,
-    ];
+    try {
+        $requestObject = [
+            "hirename" => $request->hirename,
+            "hirephone" => $request->hirephone,
+            "hireemail" => $request->hireemail,
+            "hiremessage" => $request->hiremessage,
+            "hiremessage" => $request->hiremessage,
+            "hiremessage" => $request->hiremessage,
+            "deleted" => 0,
+        ];
 
-    $array = json_decode(file_get_contents('settings/message.json'), true);
-    $array[array_key_last($array) + 1] = $attemptToWriteObject;
-    file_put_contents('settings/message.json', json_encode($array));
-    return back()->with('success', message('save'));
+        $array = json_decode(file_get_contents('settings/message.json'), true);
+        $array[array_key_last($array) + 1] = $requestObject;
+        file_put_contents('settings/message.json', json_encode($array));
+        return back()->with('success', 'Message sent successfully!');
+    } catch (\Throwable $e) {
+        return back()->with('danger', $e->getMessage());
+    }
 });
 Route::match(['get', 'post'], 'login', 'LoginController@login')->name('login');
 

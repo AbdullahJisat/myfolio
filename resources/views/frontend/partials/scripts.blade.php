@@ -1,6 +1,7 @@
 <script src="{{ asset('frontend') }}/js/modernizr.min.js"></script>
 
 <script src="{{ asset('frontend') }}/js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{ asset('frontend') }}/js/bootstrap.min.js"></script>
 <script src="{{ asset('frontend') }}/js/waypoints.min.js"></script>
 <script src="{{ asset('frontend') }}/js/jquery.appear.js"></script>
@@ -16,7 +17,6 @@
 <script src="{{ asset('frontend') }}/js/snazzy-info-window.min.js"></script>
 <script src="{{ asset('frontend') }}/js/general.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script>
     @if (Session::has('success'))
